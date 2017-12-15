@@ -1,0 +1,224 @@
+<!--<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
+                
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Προφίλ | S.A.M
+    </title>
+    <link href="../styles/registered_user/profile.css" rel="stylesheet" type="text/css">
+    <link href="../styles/tipsy.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Nikos Rigakis">
+    <meta name="keywords" content="register, profile, hy359">
+    <meta name="description" content="User Profile">
+    <!-- Used for responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/pbkdf2.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCbz8555rGB5JXok5UnEpwK9ZCLVkETZbc&sensor=false"></script>
+    <script src="../scripts/addLocationMap.js"></script>
+    <script src='../scripts/jquery.tipsy.js'></script>
+    <script src="../scripts/formValidation.js"></script>
+    <script src="../scripts/aes.js"></script>
+    <script>
+        $(function() {
+            $('a[rel=tipsy]').tipsy({gravity: 'w'});
+        });
+    </script>
+</head>
+<body>
+     <h1>
+        Αλλαγή Στοιχείων
+        <a class="button2" href="javascript:history.back()">Πίσω</a>
+        <input type="text" id="search" name="search" placeholder="Αναζήτηση" value>
+        <a href="../search.html"><img class="search" src="../images/search.png" alt="search"></a>
+        <span class="profilePhoto">
+        <ul>
+            <li><a href="profile.html">Προφίλ</a></li>
+            <li><a href="favourites.html">Αγαπημένα</a></li>
+            <li><a href="shoppinglist.html">Shopping list</a></li>
+            <li><a href="../index.html">Έξοδος</a></li>
+        </ul>
+        </span>
+        <a href="addLocation.html"><img class="changeLocation" src="../images/miniMap.png"/></a>
+    </h1>
+    <div id="main">
+        <div id="userProfile">
+            <form id="register" action="profile.html" method="post" 
+                enctype="multipart/form-data" autocomplete="on" 
+                onsubmit="return validateForm();">
+                <div id="mainContent">
+                    <div style="display: inline-block;">
+                        <img id="userPhoto" src="../images/defaultPhoto.jpg" alt="userPhoto"/> <!--src="ImageServlet?id=<%=request.getSession().getAttribute("id")%> " alt="userPhoto"/>-->
+                </div>
+                <div id="shortInfo">
+                    <h2>
+                        Nionios Kakomiroglou<!--<%=request.getSession().getAttribute("fname")%> 
+                        <%=request.getSession().getAttribute("lname")%>-->
+                    </h2>
+                    <span id="username1"><i>Nionios<!--<%=request.getSession().getAttribute("username")%>--></i></span><br>
+                    <span id="mail">nionios1990@admin.com<!--<%=request.getSession().getAttribute("email")%>--></span><br>
+                    <input class="button" type="submit" name="submitButton" value="Αποθήκευση"/>
+                    <a class="button" name="clearButton" href="javascript:history.back()"><!--href="ProfileServlet?userName=<%=request.getSession().getAttribute("username")%>-->Ακύρωση</a>
+                </div>
+                <div id="details">
+                    <hr><h3>Αλλαγή Στοιχείων <span style="float:right; font-size: 13px; vertical-align: bottom;"></span></h3><hr>
+                    <table>
+                    <tr>
+                        <td class="desc"><label for="fname">Όνομα:</label></td>
+                        <td>
+                            <input type="text" name="userFirstName" value="Nionios"><!--value="<%=request.getSession().getAttribute("fname")%>" id="fname" pattern="([A-Za-z]+[ -]?[A-Za-z]*){2,20}" required/>-->
+                            <span><a rel='tipsy' title="Ένα κείμενο από 2 μέχρι 20 χαρακτήρες. Αποδεκτοί χαρακτήρες είναι οι λατινικοί και οι ελληνικοί, καθώς και μία μόνο εμφάνιση των χαρακτήρων κενό και παύλα.">[?]</a></span>
+                            <img id='invalidName' src="../images/alert.png"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="desc"><label for="lname">Επώνυμο:</label></td>
+                        <td>
+                            <input type="text" name="userLastName" value="Kakomiroglou"><!--value="<%=request.getSession().getAttribute("lname")%>" id="lname" pattern="([A-Za-z]+[ -]?[A-Za-z]*){2,30}" required/>-->
+                            <span><a rel='tipsy' title="Ένα κείμενο από 2 μέχρι 30 χαρακτήρες. Αποδεκτοί χαρακτήρες είναι οι λατινικοί και οι ελληνικοί, καθώς και μία μόνο εμφάνιση των χαρακτήρων κενό και παύλα.">[?]</a></span>
+                            <img id='invalidLastName' src="../images/alert.png"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="desc"><label for="email">E-mail:</label></td>
+                        <td>
+                            <input type="email" name="userEmail" ><!--value="<%=request.getSession().getAttribute("email")%>" id="email" placeholder=" myname@example.com" pattern="([a-z0-9\._-]+)@([a-z0-9\.-]+)\.([a-z\.]{2,6})$" required/>-->
+                            <span><a rel='tipsy' title=" Θα πρέπει να περιέχει μία μόνο εμφάνιση του χαρακτήρα '@' και τουλάχιστον μία εμφάνιση του χαρακτήρα '.'">[?]</a></span>
+                            <img id='invalidEmail' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="username">Username:</label></td>
+                       <td>
+                           <input type="text" name="userName" value="nionios"><!--value="<%=request.getSession().getAttribute("username")%>" id="username" pattern="{8,}" required/>-->
+                           <span><a rel='tipsy' title="Κείμενο τουλάχιστον 8 χαρακτήρων.">[?]</a></span>
+                           <img id='invalidUsername' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="password">Κωδικός χρήστη:</label></td> <!-- menei to toul ena symbolo -->
+                       <td>
+                           <input type="password" name="userPassword" value="**********"><!--value="<%=request.getSession().getAttribute("password")%>" id="password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*\W).{6,10}" required/>-->
+                           <span><a rel='tipsy' title="Κείμενο 6 έως 10 χαρακτήρων. Θα πρέπει να περιέχει τουλάχιστον ένα λατινικό χαρακτήρα, τουλάχιστον ένα αριθμό και τουλάχιστον ένα σύμβολο.">[?]</a></span>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="confirmPassword">Επιβεβαίωση κωδικού:</label></td>
+                       <td><input type="password" name="userConfirmPassword" value="**********"><!--value="<%=request.getSession().getAttribute("password")%>" id="confirmPassword" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*\W).{6,10}" required/>--></td>
+                    </tr>
+                    <tr id="invalidMessage" style="visibility: hidden;">
+                       <td></td>
+                       <td><span id="invalidPassInfo"></span></td></tr>
+                    <tr>
+                       <td class="desc"><label for="birthdate">Ημ/νία γέννησης:</label></td>
+                       <td><input type="date" name="userBirthDate" value=""><!--value="<%=request.getSession().getAttribute("birthdate")%>" id="birthdate" required/>-->
+                           <img id="invalidDate" src="../images/alert.png"/>&nbsp;<span id="invalidDateInfo"></span>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="gender">Φύλο:</label></td>
+                       <td>
+                           <input type="radio" name="userGender" id="Male" value="Male"/>Αγόρι
+                           <input type="radio" name="userGender" id="Female" value="Female"/>Κορίτσι
+                           <input type="radio" name="userGender" id="Unknown" value="Unknown" checked="checked"/>Μη Εφαρμόσιμο
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="country">Χώρα:<span style="color: red;">*</span></label></td>
+                       <td><select id="country" name="userCountry"> <!--value="<%=request.getSession().getAttribute("country")%>"></select>--></td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="city">Πόλη:<span style="color: red;">*</span></label></td>
+                       <td>
+                           <input type="text" name="userCity" value="Heraklion"> <!--value="<%=request.getSession().getAttribute("city")%>" id="city" pattern="[A-Za-z].{2,50}" required/>-->
+                           <span><a rel='tipsy' title="Ένα κείμενο από 2 έως 50 χαρακτήρες.">[?]</a></span>
+                           <img id='invalidCity' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="address">Διεύθυνση Κατοικίας:</label></td>
+                       <td><input type="text" name="userAddrHome" value="Lasithiou 21"><!--value="<%=request.getSession().getAttribute("haddress")%>" id="address" pattern="(([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+).{1,50})\s+(\d{1,})\s+(\d{5})"/>-->
+                           <span><a rel='tipsy' title="Αποτελείται από ένα κείμενο έως 50 χαρακτήρες για τη διεύθυνση, έναν αριθμό για τον αριθμό της διεύθυνσης και έναν αριθμό για τον ταχυδρομικό κώδικα. π.χ. Κνωσσού 11 71409">[?]</a></span>
+                           <img id='invalidAddr' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="address">Διεύθυνση Εργασίας:</label></td>
+                       <td>
+                           <input type="text" name="userAddrJob" value="Lasithiou 22"><!--value="<%=request.getSession().getAttribute("jaddress")%>" id="address" pattern="(([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+).{1,50})\s+(\d{1,})\s+(\d{5})"/>-->
+                           <span><a rel='tipsy' title="Αποτελείται από ένα κείμενο έως 50 χαρακτήρες για τη διεύθυνση, έναν αριθμό για τον αριθμό της διεύθυνσης και έναν αριθμό για τον ταχυδρομικό κώδικα. π.χ. Κνωσσού 11 71409">[?]</a></span>
+                           <img id='invalidAddr' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="telephone">Τηλέφωνο Κινητό:</label></td>
+                       <td><input type="tel" name="userTelMobile" value="6977755775"><!--value="<%=request.getSession().getAttribute("mtel")%>" id="telephone" pattern="[0-9]{10}"/>-->
+                           <span><a rel='tipsy' title="Επιτρεπτοί χαρακτήρες είναι μόνο οι αριθμοί.">[?]</a></span>
+                           <img id='invalidTel' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="telephone">Τηλέφωνο Σταθερό:</label></td>
+                       <td><input type="tel" name="userTelHome" value="2811110391"><!--value="<%=request.getSession().getAttribute("htel")%>" id="telephone" pattern="[0-9]{10}"/>-->
+                           <span><a rel='tipsy' title="Επιτρεπτοί χαρακτήρες είναι μόνο οι αριθμοί.">[?]</a></span>
+                           <img id='invalidTel' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="job">Επάγγελμα:</label></td>
+                       <td>
+                           <input type="text" name="userJob" value=""> <!--value="<%=request.getSession().getAttribute("job")%>" id="job" maxlength="50"/>-->
+                           <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες.">[?]</a></span>
+                           <img id='invalidJob' src="../images/alert.png"/>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><img src="../images/fb.ico" alt="fb" style="vertical-align: middle"/>&nbsp;<label for="socialF" style="vertical-align: middle">Facebook:</label></td>
+                       <td>
+                           <input type="text" name="userFacebook" value="admin"><!--value="<%=request.getSession().getAttribute("facebook")%>" id="socialF" maxlength="50" placeholder=" Name / URL">-->
+                           <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες (ή το URL).">[?]</a></span>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><img src="../images/skype.png" alt="sk" style="vertical-align: middle"/>&nbsp;<label for="socialS" style="vertical-align: middle">Skype:</label></td>
+                       <td>
+                           <input type="text" name="userSkype" value="admin"><!--value="<%=request.getSession().getAttribute("skype")%>" id="socialS" maxlength="50" placeholder=" ID">-->
+                           <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες.">[?]</a></span>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><img src="../images/gtalk.png" alt="gm" style="vertical-align: middle"/>&nbsp;<label for="socialG">Gmail / GTalk:</label></td>
+                       <td>
+                           <input type="text" name="userGmail" value="admin"><!--value="<%=request.getSession().getAttribute("gmail")%>" id="socialG" maxlength="50" placeholder=" ID">-->
+                           <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες.">[?]</a></span>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td class="desc"><label for="info">Περισσότερες<br>πληροφορίες:</label></td>
+                       <td colspan="2"><textarea name="userInfo" /></textarea></td><!--value="<%=request.getSession().getAttribute("info")%>" id="info" rows="5" cols="40" maxlength="500" placeholder="Εδώ μπορείτε να εισάγετε επιπλέον πληροφορίες που αφορούν εσάς, όπως χόμπι/ενδιαφέροντα κλπ.">-->
+                    </tr>
+                    <tr>
+                       <td class="desc"><label>Φωτογραφία:</label></td>
+                       <td colspan="2"><input type="file" name="userPhoto" id="photo"/></td>
+                    </tr>
+                    <tr>
+                        <td class="desc">
+                            <label for="location">Τοποθεσία:</label>
+                        </td>
+                        <td id="googleMap">
+
+                        </td>
+                    </tr>
+                    </table>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    <script src="../scripts/generateCountries.js"></script>
+    <script>generateCountries("country");</script>
+    </body>
+</html>

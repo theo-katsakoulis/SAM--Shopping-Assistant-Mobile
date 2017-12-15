@@ -1,0 +1,235 @@
+<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Εγγραφή Χρήστη | S.A.M.</title>
+	<link href="styles/register.css" rel="stylesheet" type="text/css">
+        <link href="styles/tipsy.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Nikos Rigakis">
+	<meta name="keywords" content="register, profile, hy359">
+	<meta name="description" content="Registration Page">
+	<!-- Used for responsiveness -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/pbkdf2.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCbz8555rGB5JXok5UnEpwK9ZCLVkETZbc&sensor=false"></script>
+        <script src="scripts/addLocationMap.js"></script>
+        <script src='scripts/jquery.tipsy.js'></script>
+        <script src="scripts/formValidation.js"></script>
+        <script src="scripts/generateCountries.js"></script>
+        <script>
+            $(function() {
+              $('a[rel=tipsy]').tipsy({gravity: 'w'});
+            });
+        </script>
+    </head>
+    <body>
+        <h1>
+            Shopping Assistant Mobile
+            <a id="return" class="button" href="index.html">Πίσω</a>
+        </h1>
+        <div id="main">
+            <section>
+                <form id="register" action="./RegisterUser" method="post" 
+                      enctype="multipart/form-data" autocomplete="on" 
+                      onsubmit="return validateForm();">
+                    <fieldset>
+                        <legend>Φόρμα Εγγραφής</legend>
+                        <h4>Παρακαλώ συμπληρώστε τα παρακάτω πεδία.</h4>
+                        <div id="page1" class="page" style="display: inline;">
+                        <h4><i>Τα παρακάτω πεδία (<span style="color: red;">*</span>) είναι υποχρεωτικά.</i>
+                            <span style="float:right;">Σελίδα 1/2</span></h4>
+                        <hr>
+                        <table class="mainTable">
+                            <tr>
+                                <td><label for="fname">Όνομα:<span style="color: red;">*</span></label></td>
+                                <td class="cell">
+                                    <input type="text" name="userFirstName" id="fname" pattern="([A-Za-z]+[ -]?[A-Za-z]*){2,20}" required/>
+                                    <span><a rel='tipsy' title="Ένα κείμενο από 2 μέχρι 20 χαρακτήρες. Αποδεκτοί χαρακτήρες είναι οι λατινικοί και οι ελληνικοί, καθώς και μία μόνο εμφάνιση των χαρακτήρων κενό και παύλα.">[?]</a></span>
+                                    <img id='invalidName' src="images/alert.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="lname">Επώνυμο:<span style="color: red;">*</span></label></td>
+                                <td>
+                                    <input type="text" name="userLastName" id="lname" pattern="([A-Za-z]+[ -]?[A-Za-z]*){2,30}" required/>
+                                    <span><a rel='tipsy' title="Ένα κείμενο από 2 μέχρι 30 χαρακτήρες. Αποδεκτοί χαρακτήρες είναι οι λατινικοί και οι ελληνικοί, καθώς και μία μόνο εμφάνιση των χαρακτήρων κενό και παύλα.">[?]</a></span>
+                                    <img id='invalidLastName' src="images/alert.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">E-mail:<span style="color: red;">*</span></label></td>
+                                <td>
+                                    <input type="email" name="userEmail" id="email" placeholder=" myname@example.com" pattern="([a-z0-9\._-]+)@([a-z0-9\.-]+)\.([a-z\.]{2,6})$" required/>
+                                    <span><a rel='tipsy' title=" Θα πρέπει να περιέχει μία μόνο εμφάνιση του χαρακτήρα '@' και τουλάχιστον μία εμφάνιση του χαρακτήρα '.'">[?]</a></span>
+                                    <img id='invalidEmail' src="images/alert.png"/>
+                                    <!-- <% if(request.getAttribute("invalidEmail")!=null){ %>
+                                        <span style="color:red;"><%=request.getAttribute("invalidEmail") %></span>
+                                    <% } %> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="username">Username:<span style="color: red;">*</span></label></td>
+                                <td>
+                                    <input type="text" name="userName" id="username" pattern="{8,}" required/>
+                                    <span><a rel='tipsy' title="Κείμενο τουλάχιστον 8 χαρακτήρων.">[?]</a></span>
+                                    <img id='invalidUsername' src="images/alert.png"/>
+                                    <!-- <% if(request.getAttribute("invalidUname")!=null){ %>
+                                        <span style="color:red;"><%=request.getAttribute("invalidUname") %></span>
+                                    <% } %> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="password">Κωδικός χρήστη:<span style="color: red;">*</span></label></td> <!-- menei to toul ena symbolo -->
+                                <td>
+                                    <input type="password" name="userPassword" id="password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*\W).{6,10}" required/>
+                                    <span><a rel='tipsy' title="Κείμενο 6 έως 10 χαρακτήρων. Θα πρέπει να περιέχει τουλάχιστον ένα λατινικό χαρακτήρα, τουλάχιστον ένα αριθμό και τουλάχιστον ένα σύμβολο.">[?]</a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="confirmPassword">Επιβεβαίωση κωδικού:<span style="color: red;">*</span></label></td>
+                                <td><input type="password" name="userConfirmPassword" id="confirmPassword" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*\W).{6,10}" required/></td>
+                            </tr>
+                            <tr id="invalidMessage" style='visibility: hidden'><td></td><td colspan="2"><span id="invalidPassInfo"></span></td></tr>
+                            <tr>
+                                <td><label for="birthdate">Ημ/νία γέννησης:<span style="color: red;">*</span></label></td>
+                                <td colspan="2"><input type="date" name="userBirthDate" id="birthdate" required/>
+                                    <img id="invalidDate" src="images/alert.png"/>&nbsp;<span id="invalidDateInfo"></span></td>
+                            </tr>
+                            <tr>
+                                <td><label for="country">Χώρα:<span style="color: red;">*</span></label></td>
+                                <td colspan="2"><select id="country" name="userCountry"></select></td>
+                            </tr>
+                            <tr>
+                                <td><label for="city">Πόλη:<span style="color: red;">*</span></label></td>
+                                <td>
+                                    <input type="text" name="userCity" id="city" pattern="[A-Za-z].{2,50}" required/>
+                                    <span><a rel='tipsy' title="Ένα κείμενο από 2 έως 50 χαρακτήρες.">[?]</a></span>
+                                    <img id='invalidCity' src="images/alert.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="location">Τοποθεσία:<span style="color: red;">*</span></label></td>
+                                <td id="googleMap" colspan="2">
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <div align="right">
+                            <input class="customButton" type="button" name="clearButton" value="Επόμενο >" onClick="showLayer('page2');return validateForm();"/>
+                        </div>
+                        </div>
+                        <div id="page2" class="page">
+                            <h4><i>Τα παρακάτω πεδία είναι προαιρετικά.</i>
+                            <span style="float:right;">Σελίδα 2/2</span></h4>
+                            <hr>
+                            <table class="mainTable">
+                            <tr>
+                                <td><label for="gender">Φύλο:</label></td>
+                                <td colspan="2">
+                                    <input type="radio" name="userGender" id="Male" value="Male"/>Αγόρι
+                                    <input type="radio" name="userGender" id="Female" value="Female"/>Κορίτσι
+                                    <input type="radio" name="userGender" id="Unknown" value="Unknown" checked="checked"/>Μη Εφαρμόσιμο
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="address">Διεύθυνση:</label></td>
+                                <td><input type="text" name="userAddrHome" id="address" pattern="(([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+).{1,50})\s+(\d{1,})\s+(\d{5})"/><br><span class="memo">Κατοικίας</span></td>
+                                <td>
+                                    <input type="text" name="userAddrJob" id="address" pattern="(([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+).{1,50})\s+(\d{1,})\s+(\d{5})"/>
+                                    <span><a rel='tipsy' title="Αποτελείται από ένα κείμενο έως 50 χαρακτήρες για τη διεύθυνση, έναν αριθμό για τον αριθμό της διεύθυνσης και έναν αριθμό για τον ταχυδρομικό κώδικα. π.χ. Κνωσσού 11 71409">[?]</a></span>
+                                    <img id='invalidAddr' src="images/alert.png"/><br>
+                                    <span class="memo">Εργασίας</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="telephone">Τηλέφωνο:</label></td>
+                                <td><input type="tel" name="userTelMobile" id="telephone" pattern="[0-9]{10}"/><br><span class="memo">Κινητό</span></td>
+                                <td><input type="tel" name="userTelHome" id="telephone" pattern="[0-9]{10}"/>
+                                    <span><a rel='tipsy' title="Επιτρεπτοί χαρακτήρες είναι μόνο οι αριθμοί.">[?]</a></span>
+                                    <img id='invalidTel' src="images/alert.png"/><br>
+                                    <span class="memo">Σταθερό</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="job">Επάγγελμα:</label></td>
+                                <td>
+                                    <input type="text" name="userJob" id="job" maxlength="50"/>
+                                    <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες.">[?]</a></span>
+                                    <img id='invalidJob' src="images/alert.png"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="info">Περισσότερες<br>πληροφορίες:</label></td>
+                                <td colspan="2"><textarea name="userInfo" id="info" rows="5" cols="53" maxlength="500" placeholder="Εδώ μπορείτε να εισάγετε επιπλέον πληροφορίες που αφορούν εσάς, όπως χόμπι/ενδιαφέροντα κλπ."></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><label>Φωτογραφία:</label></td>
+                                <td colspan="2"><input type="file" name="userPhoto" id="photo"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="socialF">Social:</label></td>
+                                <td colspan="2">
+                                    <table>
+                                        <tr>
+                                            <td><img src="images/fb.ico" alt="fb" style="vertical-align: middle"/>&nbsp;<label for="socialF" style="vertical-align: middle">Facebook:</label></td>
+                                            <td>
+                                                <input type="text" name="userFacebook" id="socialF" maxlength="50" placeholder=" Name / URL">
+                                                <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες (ή το URL).">[?]</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="images/skype.png" alt="sk" style="vertical-align: middle"/>&nbsp;<label for="socialS" style="vertical-align: middle">Skype:</label></td>
+                                            <td>
+                                                <input type="text" name="userSkype" id="socialS" maxlength="50" placeholder=" ID">
+                                                <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες.">[?]</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="images/gtalk.png" alt="gm" style="vertical-align: middle"/>&nbsp;<label for="socialG">Gmail/GTalk:</label></td>
+                                            <td>
+                                                <input type="text" name="userGmail" id="socialG" maxlength="50" placeholder=" ID">
+                                                <span><a rel='tipsy' title="Ένα κείμενο έως 50 χαρακτήρες.">[?]</a></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <div style="float:left;">
+                            <input class="customButton" type="button" name="backButton" value="< Πίσω" onClick="showLayer('page1'); decryptPassword();"/>
+                        </div>
+                        <div style="float:right;">
+                            <input class="customButton" type="submit" name="submitButton" value="Εγγραφή"/>
+                        </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+        <script>generateCountries("country");</script>
+        <script>
+            var currentLayer = 'page1';
+            function showLayer(layer){
+                if(currentLayer === 'page1'){
+                    if(validateForm()){
+                        hideLayer(currentLayer);
+                        document.getElementById(layer).style.display = 'inline';
+                        currentLayer = layer;
+                    }
+                }else{
+                    hideLayer(currentLayer);
+                    document.getElementById(layer).style.display = 'inline';
+                    currentLayer = layer;
+                }
+            }
+            function hideLayer(layer){
+                document.getElementById(layer).style.display = 'none';
+            }
+        </script>
+    </body>
+</html>

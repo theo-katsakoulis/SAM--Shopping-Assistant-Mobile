@@ -1,0 +1,248 @@
+<!--<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--<%=request.getSession().getAttribute("fname")%> 
+            <%=request.getSession().getAttribute("lname")%>-->
+        <title>24 Ωρες Περίπτερα | Προφίλ</title>
+        <link href="../styles/simple_user/markets_more.css" rel="stylesheet" type="text/css">
+        <link href="../styles/tipsy.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="SAM, store, profile, hy359">
+        <meta name="description" content="Store Profile">
+        <!-- Used for responsiveness -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCbz8555rGB5JXok5UnEpwK9ZCLVkETZbc&sensor=false"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="../scripts/storeOnMap.js"></script>
+        <script src='../scripts/jquery.tipsy.js'></script>
+        <script>
+            $(function() {
+              $('a[rel=tipsy]').tipsy({gravity: 'w'});
+            });
+        </script>
+        <script>
+            $(document).ready(function(){
+                $("#showMore").click(function(){
+                    $("#ratingsMore").toggle(1000);
+                    $("#showMore").text($("#showMore").text()==='Περισσότερα'?'Λιγότερα':'Περισσότερα');
+                });
+            });
+            $(document).ready(function(){
+                $("#rate").click(function(){
+                    $("#rate").hide();
+                    $("#rateField").show();
+                });
+            });
+            $(document).ready(function(){
+                $("#cancel").click(function(){
+                    $("#rateField").hide();
+                    $("#rate").show();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>
+            24 Ωρες Περίπτερα
+            <a class="button2" href="javascript:history.back()">Πίσω</a>
+            <input type="text" id="search" name="search" placeholder="Αναζήτηση" value>
+            <a href="../search.html"><img class="search" src="../images/search.png" alt="search"></a>
+            <a href="addLocation.html"><img class="changeLocation" src="../images/miniMap.png"/></a>
+        </h1>
+        <div id="main">
+            <!--<% if(request.getAttribute("error")!=null){ %>
+                <p style="color:red;"><%=request.getAttribute("error") %></p>
+            <% } %>-->
+            <div id="storeProfile">
+                <div id="mainContent">
+                    <div class="storeProfile">
+                        <div class="storePhoto">
+                            <a href="market_page.html">
+                                <img class="storePhotoContainer" src="../images/defaultPhoto.jpg" alt="storePhoto"/>
+                            </a>
+                        </div>
+                        <div class="info">
+                            <h3>24 Ωρες Περίπτερα_Mini Market</h3>
+                            <div class="shortInfo">
+                                <span class="address">
+                                    Λεωφόρος Παρλαμά
+                                </span>
+                                <br>
+                                <span class="distance">
+                                    Απόσταση : 3km&nbsp;&nbsp;&nbsp;
+                                </span>
+                                <br>
+                                <span class="storeSite">
+                                    <a href="www.24hourmarket.gr">www.24hourmarket.gr</a>
+                                </span>
+                                <br>
+                                <span class="rating">
+                                    <a href="#rating">
+                                        <img src="../images/golden_star.png"/>
+                                        <img src="../images/golden_star.png"/>
+                                        <img src="../images/golden_star.png"/>
+                                        <img src="../images/gray_star.png"/>
+                                        <img src="../images/gray_star.png"/>
+                                    </a>
+                                </span>
+                                <br>
+                                <span class="category">
+                                    Κατηγορία:
+                                    <a href="">Ψιλικά</a>,
+                                    <a href="">Market</a>,
+                                    <a href="">Τρόφιμα</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="details">
+                        <div id="description">
+                            <h3 class="title">Περιγραφή</h3>
+                            <p>
+                                Τα Ok! Markets είναι καταστήματα τροφίμων 65-90 τετραγωνικών που πουλάνε γαλακτοκομικά, τρόφιμα και είδη πρώτης ανάγκης.<br> 
+                                Διαθέτουν μια ποικιλία μόνο τυποποιημένων προϊόντων που ανέρχεται στους 3500 κωδικούς και μπορούν να καλύψουν πλήρως τις
+                                ανάγκες της οικογένειας μας στην κατηγορία των αγαθών που προμηθευόμαστε από το τυπικό super market.<br>Το ωράριο λειτουργίας 
+                                τους είναι απόλυτα εξυπηρετικό καθώς λειτουργούν από Δευτέρα έως και Κυριακή από τις 8:00 έως 23:00 απελευθερώνοντας έτσι 
+                                το μέσο καταναλωτή που πιέζεται από τα ασφυκτικά ωράρια και την έλλειψη χρόνου που είναι έντονη στην εποχή μας.
+                            </p>
+                        </div>
+                        <div id="location">
+                            <h3 class="title">Χάρτης</h3><br>
+                            <p id="googleMap"></p>
+                        </div><br>
+                        <div id="contact">
+                            <h3 class="title">Στοιχεία Επικοινωνίας</h3>
+                            <table>
+                                <tr>
+                                    <td>Σταθερό Τηλέφωνο:</td>
+                                    <td>(+30) 2810 123456</td>
+                                </tr>
+                                <tr>
+                                    <td>Κινητό Τηλέφωνο:</td>
+                                    <td>(+30) 697 12 34 567</td>
+                                </tr>
+                            </table>
+                        </div><br>
+                        <div id="rating">
+                            <h3 class="title">Αξιολόγηση ( 128 χρήστες )</h3>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <span class="ratePhoto"></span>
+                                        <span>Alekos Tsipras</span>
+                                        <span class="rating">
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                        </span>
+                                        <span><i>Μέτριο το κατάστημα!</i></span>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="ratePhoto"></span>
+                                        <span>Lefis Abiniapioglou</span>
+                                        <span class="rating">
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                        </span>
+                                        <span><i>Πολύ καλό</i></span>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="ratePhoto"></span>
+                                        <span>Nikos Papadopoulos</span>
+                                        <span class="rating">
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                                <tr id="ratingsMore">
+                                    <td>
+                                        <span class="ratePhoto"></span>
+                                        <span>Nikos Papadopoulos</span>
+                                        <span class="rating">
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/golden_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                            <img src="../images/gray_star.png"/>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a id="showMore" class="button">Περισσότερα</a>
+                                    </td>
+                                    <td>
+                                        <a id="rate" class="button" style="float:right;">Αξιολογήστε</a>
+                                    </td>
+                                </tr>
+                                <tr id="rateField">
+                                    <td>
+                                        <span id="loginField">
+                                            <input class="input" type="text" name="userName" id="username" pattern="{8,}" placeholder="Username" required/>
+                                            <span><a rel='tipsy' title="Κείμενο τουλάχιστον 8 χαρακτήρων.">[?]</a></span>
+                                            <br>
+                                            <input class="input" type="password" name="userPassword" id="password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*\W).{6,10}" placeholder="Password" required/>
+                                            <span><a rel='tipsy' title="Κείμενο 6 έως 10 χαρακτήρων. Θα πρέπει να περιέχει τουλάχιστον ένα λατινικό χαρακτήρα, τουλάχιστον ένα αριθμό και τουλάχιστον ένα σύμβολο.">[?]</a></span>
+                                            <br>
+                                            <a class="button" href="#">Είσοδος</a>
+                                            <a id="cancel" class="button" href="">Ακύρωση</a>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div><br>
+                        <div id="products">
+                            <h3 class="title">Προϊόντα</h3>
+                            <table id="productTable">
+                                <tr>
+                                    <td>
+                                        <a class="buttonProduct">ION &nbsp;&nbsp;<img style="vertical-align: middle;" src="../images/add.png"/></a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Camel &nbsp;&nbsp;<img style="vertical-align: middle;" src="../images/add.png"/></a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Ζαρός &nbsp;&nbsp;<img style="vertical-align: middle;" src="../images/add.png"/></a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Durex &nbsp;&nbsp;<img style="vertical-align: middle;" src="../images/add.png"/></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

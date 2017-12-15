@@ -1,0 +1,49 @@
+<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Τρέχουσα Τοποθεσία | S.A.M.</title>
+	<link href="../styles/location.css" rel="stylesheet" type="text/css">
+	<link href="../styles/registered_user/stores_list.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="location, profile, hy359">
+	<meta name="description" content="User Location">
+	<!-- Used for responsiveness -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCbz8555rGB5JXok5UnEpwK9ZCLVkETZbc&sensor=false"></script>
+        <script src="../scripts/addLocationMap.js"></script>
+    </head>
+    <body>
+        <h1>
+            Τοποθεσία
+            <a class="button2" href="javascript:history.back()">Πίσω</a>
+            <span class="profilePhoto">
+            <ul>
+                <li><a href="profile.html">Προφίλ</a></li>
+                <li><a href="favourites.html">Αγαπημένα</a></li>
+                <li><a href="shoppinglist.html">Shopping list</a></li>
+                <li><a href="../index.html">Έξοδος</a></li>
+            </ul>
+            </span>
+        </h1>
+        <div id="main">
+            <!--<% if(request.getAttribute("error")!=null){ %>
+                <p style="color:red;"><%=request.getAttribute("error") %></p>
+            <% } %> -->
+            <!--<p>Παρακαλώ εισάγετε username και password για να εισέλθετε.</p>-->
+            <div id="location">
+                <div id="whereRU">
+                    <h2>Πού βρίσκεστε;</h2>
+                    <hr>
+                </div>
+                <div>
+                    <a href="stores_categories.html" class="customButton" name="nextPage">Επόμενο</a>
+                </div>
+                <br>
+                <div id="googleMap">
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

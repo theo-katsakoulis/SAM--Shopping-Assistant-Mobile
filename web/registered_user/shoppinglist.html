@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping List | S.A.M.</title>
+        <link href="../styles/registered_user/shopping_list.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="SAM, list, markets, stores, hy359">
+        <meta name="description" content="Stores List">
+        <!-- Used for responsiveness -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#main").fadeIn(1000);
+            });
+        </script>
+    </head>
+    <body>
+        <h1>
+            Shopping List
+            <a class="button2" href="javascript:history.back()">Πίσω</a>
+            <input type="text" id="search" name="search" placeholder="Αναζήτηση" value>
+            <a href="../search.html"><img class="search" src="../images/search.png" alt="search"></a>
+            <span class="profilePhoto"/>
+            <ul>
+                <li><a href="profile.html">Προφίλ</a></li>
+                <li><a href="favourites.html">Αγαπημένα</a></li>
+                <li><a href="shoppinglist.html">Shopping list</a></li>
+                <li><a href="../index.html">Έξοδος</a></li>
+            </ul>
+            </span>
+            <a href="addLocation.html"><img class="changeLocation" src="../images/miniMap.png"/></a>
+        </h1>
+        <div id="main">
+            <div id="sort">
+                Ταξινόμηση:
+                <select>
+                    <option value="category">Κατηγορία</option>
+                    <option value="nameAsc">Αλφαβητικά (A -> Ω)</option>
+                    <option value="nameDesc">Αλφαβητικά (Ω -> A)</option>
+                </select>
+            </div>
+            <!--<div>
+                <a class="button">Προσθήκη</a>
+            </div>-->
+            <div id="categories">
+                <div id="mainContent">
+                    <div id="products">
+                        <div class="category">
+                            <h3 class="title">Ψιλικά</h3>
+                            <table id="productTable">
+                                <tr>
+                                    <td>
+                                        <a class="buttonProduct">ION &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Camel &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Ζαρός &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Durex &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div><br>
+                    </div>
+                    <hr>
+                    <div class="category">
+                            <h3 class="title">Τσιγάρα</h3>
+                            <table id="productTable">
+                                <tr>
+                                    <td>
+                                        <a class="buttonProduct">Golden Virginia &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Camel &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Old Holborn &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="buttonProduct">Karelia &nbsp;&nbsp;
+                                            <img class="delete-product-icon" src="../images/deleteProduct.png"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div><br>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

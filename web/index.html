@@ -1,0 +1,81 @@
+<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Αρχική | S.A.M.</title>
+	<link href="styles/index.css" rel="stylesheet" type="text/css">
+        <link href="styles/tipsy.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="login, register, profile, hy359">
+	<meta name="description" content="SAM Login Page">
+	<!-- Used for responsiveness -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/pbkdf2.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src='scripts/jquery.tipsy.js'></script>
+        <script src="scripts/aes.js"></script>
+        <script>
+            $(function() {
+              $('a[rel=tipsy]').tipsy({gravity: 'w'});
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Shopping Assistant Mobile</h1>
+        <div id="main">
+            <!--<% if(request.getAttribute("error")!=null){ %>
+                <p style="color:red;"><%=request.getAttribute("error") %></p>
+            <% } %> -->
+            <!--<p>Παρακαλώ εισάγετε username και password για να εισέλθετε.</p>-->
+            <form id="login" action="registered_user/stores_categories.html" method="post" onsubmit="encryptPassword();">
+                <table id="mainTable" align="center">
+                
+                <tr>
+                    <td>
+                        <input class="input" type="text" name="userName" id="username" pattern="{8,}" placeholder="Username" required/>
+                        <span><a rel='tipsy' title="Κείμενο τουλάχιστον 8 χαρακτήρων.">[?]</a></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="input" type="password" name="userPassword" id="password" pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*\W).{6,10}" placeholder="Password" required/>
+                        <span><a rel='tipsy' title="Κείμενο 6 έως 10 χαρακτήρων. Θα πρέπει να περιέχει τουλάχιστον ένα λατινικό χαρακτήρα, τουλάχιστον ένα αριθμό και τουλάχιστον ένα σύμβολο.">[?]</a></span>
+                    </td>
+                </tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="rememberMe" value="yes">Να με θυμάσαι
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 10px;">
+                        <input class="customButton" type="submit" name="loginButton" value="Είσοδος"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="">Ξέχασα τον κωδικό</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="customButton2" type="button" onclick="location.href = 'simple_user/addLocation.html'" name="freeLogin" value="Ελεύθερη Είσοδος">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="customButton2" type="button" onclick="location.href = 'admin/administrator.html'" name="registerButton" value="Είσοδος Διαχειριστή">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="customButton2" type="button" onclick="location.href = 'register.html'" name="registerButton" value="Δημιουργία Λογαριασμού">
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </body>
+</html>

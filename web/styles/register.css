@@ -1,0 +1,153 @@
+
+::-webkit-input-placeholder{
+    font-style: italic;
+    font-size: 12px;
+}
+
+body{
+    font-family: 'Segoe UI', Helvetica, Arial, Sans-Serif;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    margin: 0px;
+}
+
+legend{
+    font-size: 20px;
+}
+
+h1{
+    font-weight: lighter;
+    font-size: 30px;
+    color: lightgray;
+    padding:10px;
+    background: #666666;
+    margin: 0px;
+}
+
+h4{
+   margin-top: 5px;
+   margin-bottom: 5px; 
+
+}
+
+hr{
+    height: 0px;
+    margin: 10px 0px 10px 0px;
+    border: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #BCBCBC;
+    text-align: left;
+    direction: ltr;
+    clear: both;
+}
+
+fieldset{
+    border: 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #BCBCBC;
+    border-radius: 3px;
+    padding: 10px 20px 20px 20px;
+}
+
+.mainTable{
+    border: 5px;
+    text-align: left;
+}
+
+.mainTable tr{
+    line-height: 25px;
+}
+
+.mainTable td{
+    vertical-align: top;
+}
+
+.memo{
+    font-size: 11px;
+    color: #999;
+}
+
+label{
+    font-weight: bold;
+    font-size: 11px;
+}
+
+#main{
+    width: 53%;
+    margin: 20px auto 20px auto;
+}
+
+textarea{
+    resize: none;
+}
+
+#invalidPassInfo, #invalidDateInfo{
+    font-style: italic;
+    color: red;
+}
+
+#invalidMessage{
+    visibility: hidden;
+}
+
+#invalidName, #invalidLastName, #invalidEmail, #invalidUsername, #invalidPass, #invalidDate, #invalidCity, #invalidAddr, #invalidTel, #invalidJob{
+    vertical-align: middle;
+    visibility: hidden;
+}
+
+input[type="submit"].customButton, input[type="button"].customButton {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 0;
+    cursor: pointer;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 12px;
+    background-color: #498bb7;//#008CBA;
+    border-color: #007095;
+    color: #FFFFFF;
+    transition: background-color 200ms ease-out;
+}
+
+input[type="submit"].customButton:hover, input[type="button"].customButton:hover{
+    background-color: #007095;
+}
+
+.button {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  float: right;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 12px;
+  font-size: 0.88889rem;
+  background-color: #a8a8a8;//#008CBA;
+  border-color: #007095;
+  color: #FFFFFF;
+  transition: background-color 200ms ease-out;
+  margin: auto 10px;
+}
+
+.button:hover{
+    background-color: #929292;
+}
+
+.page{
+    display: none;
+}
+
+#googleMap{
+    //box-shadow: 0 0 20px #888;
+    width:  400px;
+    height: 200px;
+}

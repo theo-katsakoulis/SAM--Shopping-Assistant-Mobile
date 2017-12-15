@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Καταστήματα | S.A.M.</title>
+        <link href="../styles/simple_user/markets_list.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="SAM, list, markets, stores, hy359">
+        <meta name="description" content="Stores List">
+        <!-- Used for responsiveness -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#main").fadeIn(1000);
+            });
+        </script> 
+    </head>
+    <body>
+        <h1>
+            Super Market
+            <a class="button2" href="javascript:history.back()">Πίσω</a>
+            <input type="text" id="search" name="search" placeholder="Αναζήτηση" value>
+            <a href="../search.html"><img class="search" src="../images/search.png" alt="search"></a>
+            <a href="addLocation.html"><img class="changeLocation" src="../images/miniMap.png"/></a>
+        </h1>
+        <div id="main">
+            <div id="sort">
+                Ταξινόμηση:
+                <select>
+                    <option value="nameAsc">Αλφαβητικά (A -> Ω)</option>
+                    <option value="nameDesc">Αλφαβητικά (Ω -> A)</option>
+                    <option value="rate">Αξιολόγηση</option>
+                    <option value="distanceAsc">Απόσταση (Μικρότερη -> Μεγαλύτερη)</option>
+                    <option value="distanceDesc">Απόσταση (Μεγαλύτερη -> Μικρότερη)</option>
+                </select>
+            </div>
+            <div id="stores">
+                <div id="mainContent">
+                    <div class="storeProfile">
+                        <div class="storePhoto">
+                            <a href="store_page.html">
+                                <img class="storePhotoContainer" src="../images/defaultPhoto.jpg" alt="storePhoto"/>
+                            </a>
+                        </div>
+                        <div class="info">
+                            <h3>24 Ωρες Περίπτερα_Mini Market</h3>
+                            <div class="shortInfo">
+                                <a href="market_page.html#location"><img class="ico" src="../images/pin.png"/></a>
+                                <span class="address">
+                                    Λεωφόρος Παρλαμά
+                                </span>
+                                <br>
+                                <a href="market_page.html#location"><img class="ico" src="../images/route.png"/></a>
+                                <span class="distance">
+                                    Απόσταση : 3km
+                                </span>
+                                <br>
+                                <span class="storeSite">
+                                    <a href="http://www.24hourmarket.gr">www.24hourmarket.gr</a>
+                                </span>
+                                <br>
+                                <span class="rating">
+                                    <a href="store_page.html#rating">
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="showMoreButton">
+                                <a class="button" href="market_page.html">Περισσότερα</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="storeProfile">
+                        <div class="storePhoto">
+                            <a href="market_page.html">
+                                <img class="storePhotoContainer" src="../images/defaultPhoto.jpg" alt="storePhoto"/>
+                            </a>
+                        </div>
+                        <div class="info">
+                            <h3>24 Self Video</h3>
+                            <div class="shortInfo">
+                                <a href="market_page.html#location"><img class="ico" src="../images/pin.png"/></a>
+                                <span class="address">
+                                    Λεωφόρος Ηρακλείου 61
+                                </span>
+                                
+                                <br>
+                                <a href="market_page.html#location"><img class="ico" src="../images/route.png"/></a>
+                                <span class="distance">
+                                    Απόσταση: 4km
+                                </span>
+                                
+                                <br>
+                                <span class="storeSite">
+                                    <a href="#">-</a>
+                                </span>
+                                <br>
+                                <span class="rating">
+                                    <a href="store_page.html#rating">
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="showMoreButton">
+                                <a class="button" href="market_page.html">Περισσότερα</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="storeProfile">
+                        <div class="storePhoto">
+                            <a href="market_page.html">
+                                <img class="storePhotoContainer" src="https://pbs.twimg.com/media/B9atam5CQAIpBzm.jpg:large" alt="storePhoto"/>
+                            </a>
+                        </div>
+                        <div class="info">
+                            <h3>Adidas</h3>
+                            <div class="shortInfo">
+                                <a href="market_page.html#location"><img class="ico" src="../images/pin.png"/></a>
+                                <span class="address">
+                                    Αργυράκη 2
+                                </span>
+                                <br>
+                                <a href="market_page.html#location"><img class="ico" src="../images/route.png"/></a>
+                                <span class="distance">
+                                    Απόσταση: 1km
+                                </span>
+                                <br>
+                                <span class="storeSite">
+                                    <a href="http://www.adidas.gr/">www.adidas.gr</a>
+                                </span>
+                                <br>
+                                <span class="rating">
+                                    <a href="store_page.html#rating">
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/golden_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="showMoreButton">
+                                <a class="button" href="market_page.html">Περισσότερα</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="storeProfile">
+                        <div class="storePhoto">
+                            <a href="market_page.html">
+                                <img class="storePhotoContainer" src="http://www.enforce-een.eu/wp/gre/wp-content/uploads/2011/10/Alpha-Bank.png" alt="storePhoto"/>
+                            </a>
+                        </div>
+                        <div class="info">
+                            <h3>Alpha Bank</h3>
+                            <div class="shortInfo">
+                                <a href="market_page.html#location"><img class="ico" src="../images/pin.png"/></a>
+                                <span class="address">
+                                    25ης Αυγουστου 94
+                                </span>
+                                <br>
+                                <a href="market_page.html#location"><img class="ico" src="../images/route.png"/></a>
+                                <span class="distance">
+                                    Απόσταση: 2km
+                                </span>
+                                <br>
+                                <span class="storeSite">
+                                    <a href="http://www.alpha.gr/">www.alpha.gr</a>
+                                </span>
+                                <br>
+                                <span class="rating">
+                                    <a href="store_page.html#rating">
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                        <img class="goldenstar" src="../images/gray_star.png"/>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="showMoreButton">
+                                <a class="button" href="market_page.html">Περισσότερα</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

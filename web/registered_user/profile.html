@@ -1,0 +1,152 @@
+<!--<%@page contentType="text/html" pageEncoding="UTF-8"%>-->
+<!DOCTYPE html>
+<html>
+    <head>
+            <!--<%=request.getSession().getAttribute("fname")%> 
+            <%=request.getSession().getAttribute("lname")%>
+            | Προφίλ-->
+        <title> Nionios Kakomiroglou | Προφίλ</title>
+        <link href="../styles/registered_user/profile.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="register, profile, hy359">
+        <meta name="description" content="User Profile">
+        <!-- Used for responsiveness -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCbz8555rGB5JXok5UnEpwK9ZCLVkETZbc&sensor=false"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="../scripts/storeOnMap.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#showDetails").click(function(){
+                    $("#details").toggle(1000);
+                    $("#showDetails").text($("#showDetails").text()==='Εμφάνιση Στοιχείων'?'Απόκρυψη Στοιχείων':'Εμφάνιση Στοιχείων');
+                });
+            });
+        </script>
+    </head>
+    <body>
+         <h1>
+            Προφίλ
+            <a class="button2" href="javascript:history.back()">Πίσω</a>
+            <input type="text" id="search" name="search" placeholder="Αναζήτηση" value>
+            <a href="../search.html"><img class="search" src="../images/search.png" alt="search"></a>
+            <span class="profilePhoto">
+            <ul>
+                <li><a href="profile.html">Προφίλ</a></li>
+                <li><a href="favourites.html">Αγαπημένα</a></li>
+                <li><a href="shoppinglist.html">Shopping list</a></li>
+                <li><a href="../index.html">Έξοδος</a></li>
+            </ul>
+            </span>
+            <a href="addLocation.html"><img class="changeLocation" src="../images/miniMap.png"/></a>
+        </h1>
+        <div id="main">
+            <!--<% if(request.getAttribute("error")!=null){ %>
+                <p style="color:red;"><%=request.getAttribute("error") %></p>
+            <% } %>-->
+            <div id="userProfile">
+                <div id="mainContent">
+                    <div style="display: inline-block;">
+                        <img id="userPhoto" src="../images/defaultPhoto.jpg" alt="userPhoto"/>
+                    </div>
+                    <div id="shortInfo">
+                        <h3>
+                            <!--<%=request.getSession().getAttribute("fname")%> 
+                            <%=request.getSession().getAttribute("lname")%>-->
+                            Nionios Kakomiroglou
+                        </h3>
+                        <span id="username">Nionios</span><br>
+                        <span id="mail">nionios1990@mail.com</span><br>
+                        <a id="showDetails" class="button">Απόκρυψη Στοιχείων</a>
+                        <a id="showDetails" class="button" href="profileEdit.html">Επεξεργασία</a>
+                    </div>
+                    <div id="details">
+                        <hr><h3>Στοιχεία Χρήστη</h3><hr>
+                        <table>
+                            <tr>
+                                <td class="desc">Όνομα:</td>
+                                <td>Nionios</td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Επώνυμο:</td>
+                                <td>Kakomiroglou</td>
+                            </tr>
+                            <tr>
+                                <td class="desc">E-mail:</td>
+                                <td>nionios1990@mail.com</td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Username:</td>
+                                <td>Nionios</td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Κωδικός:</td>
+                                <td>**********</td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Ημ/νία γέννησης:</td>
+                                <td>8-11-1990</td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Φύλο:</td>
+                                <td>Αγόρι</td>
+                           </tr>
+                            <tr>
+                                <td class="desc">Χώρα:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Πόλη:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Διεύθυνση Κατοικίας:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Διεύθυνση Εργασίας:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Τηλέφωνο Κινητό:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Τηλέφωνο Σταθερό:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Επάγγελμα:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">Πληροφορίες:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc"><img src="../images/fb.ico" alt="fb" style="vertical-align: middle"/>&nbsp;Facebook:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc"><img src="../images/skype.png" alt="sk" style="vertical-align: middle"/>&nbsp;Skype:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc"><img src="../images/gtalk.png" alt="gm" style="vertical-align: middle"/>&nbsp;Gmail / GTalk:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="desc">
+                                    <label for="location">Τοποθεσία:</label>
+                                </td>
+                                <td id="googleMap">
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

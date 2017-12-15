@@ -1,0 +1,67 @@
+<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Υπεύθυνος Συστήματος | S.A.M.</title>
+	<link href="../styles/admin/administrator.css" rel="stylesheet" type="text/css">
+        <link href="../styles/tipsy.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Nikos Rigakis">
+	<meta name="keywords" content="register, profile, hy359">
+	<meta name="description" content="User Profile">
+	<!-- Used for responsiveness -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/pbkdf2.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src='scripts/jquery.tipsy.js'></script>
+        <script src="scripts/aes.js"></script>
+        <script>
+            $(function() {
+              $('a[rel=tipsy]').tipsy({gravity: 'w'});
+            });
+        </script>
+    </head>
+    <body>
+        <h1>
+            Υπεύθυνος Συστήματος
+            <a class="button2" href="javascript:history.back()">Πίσω</a>
+            <input type="text" id="search" name="search" placeholder="Αναζήτηση" value>
+            <a href="../search.html"><img class="search" src="../images/search.png" alt="search"></a>
+            <span class="profilePhoto">
+            <ul>
+                <li><a href="administrator.html">Αρχική</a></li>
+                <li><a href="administrator_account_edit.html">Προφίλ</a></li>
+                <li><a href="../index.html">Έξοδος</a></li>
+            </ul>
+            </span>
+        </h1>
+        <div id="main">
+            <!--<% if(request.getAttribute("error")!=null){ %>
+                <p style="color:red;"><%=request.getAttribute("error") %></p>
+            <% } %> -->
+            <!--<p>Παρακαλώ εισάγετε username και password για να εισέλθετε.</p>-->
+            <form id="login" action="./LoginServlet" method="post" onsubmit="encryptPassword();">
+                <table id="mainTable" align="center">
+                <tr>
+                    <td>
+                        <input class="customButton" type="button" onclick="location.href = 'administrator_account_edit.html'" name="submitButton" value="Επεξεργασία Προφίλ">
+                    </td>
+                    <td>
+                        <input class="customButton" type="button" onclick="location.href = 'administrator_stores_categories.html'" name="submitButton" value="Επεξεργασία Καταστήματος">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="customButton" type="button" onclick="location.href = 'administrator_markets_insert.html'" name="submitButton" value="Εισαγωγή Καταστήματος">
+                    </td>
+                    
+                    <td>
+                        <input class="customButton" type="button" onclick="location.href = 'administrator_users_list.html'" name="registerButton" value="Λίστα Χρηστών">
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </body>
+</html>

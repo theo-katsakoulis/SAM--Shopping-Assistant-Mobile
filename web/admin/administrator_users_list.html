@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Εγγεγραμμένα Μέλη | S.A.M.</title>
+    <link href="../styles/admin/administrator_users_list.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Nikos Rigakis">
+    <meta name="keywords" content="register, profile, hy359">
+    <meta name="description" content="User Profile">
+    <!-- Used for responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#main").fadeIn(1000);
+        });
+    </script>
+    </head>
+    <body>
+        <h1>
+            Εγγεγραμμένοι Χρήστες
+            <a class="button2" href="javascript:history.back()">Πίσω</a>
+            <input type="text" id="search" name="search" placeholder="Αναζήτηση" value>
+            <a href="../search.html"><img class="search" src="../images/search.png" alt="search"></a>
+            <span class="profilePhoto">
+            <ul>
+                <li><a href="administrator.html">Αρχική</a></li>
+                <li><a href="profile.html">Προφίλ</a></li>
+                <li><a href="../index.html">Έξοδος</a></li>
+            </ul>
+            </span>
+        </h1>
+        <div id="main">
+            <div id="sort">
+                Ταξινόμηση:
+                <select>
+                    <option value="nameAsc">Αλφαβητικά (A -> Ω)</option>
+                    <option value="nameDesc">Αλφαβητικά (Ω -> A)</option>
+                </select>
+            </div>
+            <div id="users">
+                <div id="mainContent">
+
+                    <!--while(result.next()){
+                        int id = result.getInt("ID");
+                        String email = filter(result.getString("EMAIL"));
+                        String fname = filter(result.getString("FIRSTNAME"));
+                        String lname = filter(result.getString("LASTNAME"));
+                        String username = filter(result.getString("USERNAME"));
+
+                        out.print(-->
+
+                    <div class="userProfile">
+                        <div style="display: inline-block; width: auto;">
+                            <img class="userPhoto" src="../images/defaultPhoto.jpg" alt="userPhoto">
+                        </div>
+                        <div class="shortInfo">
+                            <h3>Κωσταντίνος Καπάνταης</h3>
+                            <span class="username">kapadais</span><br>
+                            <span class="mail">kapadais@email.com</span><br>
+                            <a class="button" href="mailto:">Επικοινωνία</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="userProfile">
+                        <div style="display: inline-block; width: auto;">
+                            <img class="userPhoto" src="../images/defaultPhoto.jpg" alt="userPhoto">
+                        </div>
+                        <div class="shortInfo">
+                            <h3>Άρης Κωσταράς</h3>
+                            <span class="username">kostaras</span><br>
+                            <span class="mail">kostaras@email.com</span><br>
+                            <a class="button" href="mailto:">Επικοινωνία</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="userProfile">
+                        <div style="display: inline-block; width: auto;">
+                            <img class="userPhoto" src="../images/defaultPhoto.jpg" alt="userPhoto">
+                        </div>
+                        <div class="shortInfo">
+                            <h3>Μανόλης Στρατουδάκης</h3>
+                            <span class="username">manolo</span><br>
+                            <span class="mail">manolo@email.com</span><br>
+                            <a class="button" href="mailto:">Επικοινωνία</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

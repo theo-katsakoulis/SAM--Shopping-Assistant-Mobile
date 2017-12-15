@@ -1,0 +1,340 @@
+::-webkit-input-placeholder{
+    //font-style: italic;
+    //font-size: 12px;
+}
+
+body{
+    font-family: 'Segoe UI', Helvetica, Arial, Sans-Serif;
+    background-color: #e9eaed;
+    margin: 0px;
+}
+
+h1{
+    font-weight: lighter;
+    font-size: 25px;
+    color: lightgray;
+    padding:10px;
+    background: #666666;
+    margin: 0px;
+}
+
+h2{
+    font-weight: 500;
+    margin: 5px 0px 5px 0px;
+}
+
+h3{
+    margin:0px 0px 5px 0px;
+    font-weight: 500;
+    width: auto;
+}
+
+hr{
+    height: 0px;
+    margin: 5px 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #BCBCBC;
+    text-align: left;
+    direction: ltr;
+    clear: both;
+}
+
+#main{
+    width: 50%;
+    //min-width: 20%;
+    margin: 20px auto 20px auto;
+    display: none;
+}
+
+table{
+    background-color: #F2F3F4;
+    border: 1px solid white;
+    border-collapse: collapse;
+    width: 100%    
+}
+
+tr{
+    border: 2px solid white;
+}
+
+.address, .distance, .storeSite, .rating{
+    display: inline-block;
+    margin: 2px 0px;
+}
+
+.storeSite{
+    color: #739DB8;
+}
+
+.storeSite a{
+    text-decoration: none;
+    color: #739DB8;
+}
+
+.info{
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    width: 75%;
+    height: 100%;
+    position: relative;
+}
+
+.shortInfo, .showMore{
+    display: inline-block;
+}
+
+.showMoreButton{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    float: right;
+}
+
+.contactButton{
+    position: absolute;
+    bottom: 40px;
+    right: 0px;
+    float: right;
+}
+
+.storePhoto{
+    width: auto;
+    display: inline-block;
+}
+
+.storePhotoContainer{
+    float: left;
+    width: 118px;
+    //max-width: 100%;
+    height: 118px;
+    padding:4px;
+    border:1px solid #a1a1a1;
+    background-color:white;
+    border-radius: 3px;
+}
+
+.profilePhoto{
+    width: 32px;
+    //max-width: 100%;
+    height: 30px;
+    padding:1px;
+    border:1px solid white;
+    background-color:white;
+    border-radius: 3px;
+    float: right;
+    background-image: url("../../images/defaultPhoto.jpg");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.profilePhoto ul{
+    display: none;
+    list-style: none;
+    padding: 0;
+    padding-top: 16px;
+}
+.profilePhoto:hover ul{
+    display: block; /* display the dropdown */
+}
+
+.profilePhoto:pressed ul{
+    display: block; /* display the dropdown */
+}
+
+.profilePhoto ul li{
+    float: left;
+    width: 150px;
+    text-align: center;
+    line-height: 21px;
+    font-size: 14px;
+}
+    
+.profilePhoto ul li a{
+    display: block;
+    padding: 5px 10px;
+    color: #333;
+    background: #f2f2f2;
+    text-decoration: none;
+}
+
+.profilePhoto ul li a:hover{
+    color: #fff;
+    background: #939393;
+}
+
+#mainContent{
+    margin: 20px;
+}
+
+#stores{
+    border: 1px solid #a1a1a1;
+    border-radius: 5px;
+    background-color: white;
+    width: 100%;
+}
+
+.categories{
+    width: 100%;
+    height: 125px;
+}
+
+.button {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 12px;
+  font-size: 14px;
+  background-color: #498bb7;//#008CBA;
+  border-color: #007095;
+  color: #FFFFFF;
+  transition: background-color 200ms ease-out;
+  float: right;
+  vertical-align: bottom;
+}
+
+.button2 {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  float: right;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 12px 8px 12px;
+  font-size: 14px;
+  background-color: #a8a8a8;//#008CBA;
+  border-color: #007095;
+  color: #FFFFFF;
+  transition: background-color 200ms ease-out;
+  margin: auto 10px;
+}
+
+.button:hover{
+    background-color: #007095;
+}
+
+.button2:hover{
+    background-color: #929292;
+}
+
+p{
+    text-align: center;
+}
+
+img.search{
+    float: right;
+    position: relative;
+    display: inline-block;
+    margin-top: 8px;
+    right: -28px;
+}
+
+#search{
+    width: 100px;
+    height: 15px;
+    padding: 10px;
+    padding-left: 35px; 
+    background: none !important;
+    color: lightgray;
+    border: 0px;
+    //border-bottom: 1px solid lightgray;
+    box-shadow: 0 0 3px lightgray inset;
+    border-radius: 3px;
+    float: right;
+}
+
+.label{
+    //font-weight: 600;
+}
+
+.ico{
+    width: 15px;
+    height: 15px;
+}
+
+.rating a{
+    text-decoration: none;
+}
+
+.changeLocation{
+    width: 32px;
+    //max-width: 100%;
+    height: 30px;
+    float: right;
+    margin-right: 10px;
+}
+
+#sort{
+    margin-bottom: 5px;
+    //float: right;
+}
+
+.delete_icon{
+    float: right;
+}
+
+.title{
+    font-weight: lighter;
+    color: lightgray;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #666666;
+    margin: 0px;
+}
+
+#categories{
+    border: 1px solid #a1a1a1;
+    border-radius: 5px;
+    background-color: white;    
+}
+
+#productTable td{
+    float: left;
+    margin-right: 10px;
+}
+
+.buttonProduct {
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 12px;
+  font-size: 12px;
+  background-color: #498bb7;//#008CBA;
+  border-color: #007095;
+  color: #FFFFFF;
+  transition: background-color 200ms ease-out;
+  /* margin-top: 17px; */
+}
+
+.buttonProduct:hover{
+    background-color: #007095;
+}
+
+.delete-product-icon{
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+}
